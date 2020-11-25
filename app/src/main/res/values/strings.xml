@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My_First_App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">My first Toast</string>
+    <string name="channel_name">my_notif</string>
+    <string name="channel_description">my_desc</string>
+</resources>
