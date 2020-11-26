@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,14 +8,12 @@
     tools:context=".MainActivity">
 
 
-    <TextView
-        android:id="@+id/myTextView"
-        android:layout_width="wrap_content"
+   <!-- <TextView
+        android:id="@+id/activity_main_greeting_txt"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:padding="20px"
-        android:text="Hello"
-        android:textSize="25sp" />
+        android:padding="20dp"
+        android:text="Welcome! What's your name?"/>
 
     <EditText
         android:id="@+id/myInputText"
@@ -56,8 +54,63 @@
 
     <TextView
         android:id="@+id/activity_game_question_text"
-        android:layout_width="261dp"
-        android:layout_height="130dp"
+        android:layout_width="191dp"
+        android:layout_height="65dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="5dp"
+        android:padding="20px"
+        android:textColor="@color/opaque_red"
+        android:textSize="25sp" />-->
+
+
+    <EditText
+        android:id="@+id/myInputText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20px"
+        android:layout_marginEnd="20px"
+        android:hint="please type your name"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="170px"
+        />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/button1"
+        android:layout_width="174dp"
+        android:layout_height="67dp"
+        android:padding="30px"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="430px"
+        android:text="Game"
+        />
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/button2"
+        android:layout_width="174dp"
+        android:layout_height="67dp"
+        android:text="Toast and notif"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="430dp"/>
+
+    <Button
+        android:layout_gravity="center"
+        android:id="@+id/btn_open"
+        android:layout_width="174dp"
+        android:layout_height="67dp"
+        android:padding="30px"
+        android:layout_marginLeft="109dp"
+        android:layout_marginTop="300dp"
+        android:text="camera" />
+
+    <TextView
+        android:id="@+id/activity_game_question_text"
+        android:layout_width="191dp"
+        android:layout_height="65dp"
         android:layout_gravity="center"
         android:layout_marginStart="15dp"
         android:layout_marginTop="5dp"
@@ -67,18 +120,31 @@
         android:textColor="@color/opaque_red"
         android:textSize="25sp" />
 
-    <ImageView
+
+    <FrameLayout
+        android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        />
+
+    <!--<ImageView
         android:id="@+id/image_view"
-        android:text="Open camera"
-        android:layout_marginTop="10px"/>
+        android:layout_width="302dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="0px"
+        android:layout_weight=""
+        android:text="Open camera" />-->
 
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="false"
+        android:layout_alignParentBottom="true"
+        android:background="?android:windowBackground"
+        app:menu="@menu/bottom_navigation" />
 
 
-</LinearLayout>
+</RelativeLayout>

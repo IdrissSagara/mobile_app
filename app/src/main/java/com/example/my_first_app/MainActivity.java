@@ -1,11 +1,13 @@
 package com.example.my_first_app;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
 import android.Manifest;
 import android.app.Activity;
@@ -21,12 +23,15 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 import java.util.Random;
@@ -59,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        bottomNav.setSelectedItemId(R.id.home_);
+
         mUser = new User();
 
         mPreferences = getPreferences(MODE_PRIVATE);
@@ -66,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         mNameInput = findViewById(R.id.myInputText);
         mToastButton = findViewById(R.id.button2);
         notificationManager = NotificationManagerCompat.from(this);
-        imageView = findViewById(R.id.image_view);
+        //imageView = findViewById(R.id.image_view);
         btnOpen = findViewById(R.id.btn_open);
         textViewResult = findViewById(R.id.activity_game_question_text);
 
@@ -169,6 +179,27 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+
+            switch (item.getItemId()) {
+                case R.id.home_:
+                    return true;
+                case R.id.nav_home:
+                    selectedFragment = new HomeFragment();
+                    break;
+                case R.id.profil:
+                    selectedFragment = new ProfilFragment();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            return true;
+        }
+    };
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -176,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
             // get capture
             Bitmap captureImage = (Bitmap) data.getExtras().get("data");
             // set capture
-            imageView.setImageBitmap(captureImage);
+            //imageView.setImageBitmap(captureImage);
         }
 
         if (GAME_ACTIVITY_REQUEST_CODE == requestCode && RESULT_OK == resultCode) {

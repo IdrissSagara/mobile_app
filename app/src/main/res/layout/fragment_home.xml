@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+     <TextView
+         android:layout_gravity="center"
+         android:id="@+id/btn_open"
+         android:layout_width="174dp"
+         android:layout_height="wrap_content"
+         android:padding="30px"
+         android:layout_marginLeft="109dp"
+         android:layout_marginTop="430px"
+         android:text="My Favorite fragment"
+         />
+
+<!--  <ImageView
+      android:id="@+id/image_view"
+      android:layout_width="match_parent"
+      android:layout_height="407dp"
+      android:layout_marginTop="600px"
+      android:layout_weight=""
+      android:text="Open camera" />-->
+
+
+</RelativeLayout>
